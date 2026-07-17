@@ -1633,7 +1633,6 @@
             </button>
             <div class="modal-image" id="modalImage">
                 <img src="" alt="Popup Image" id="popupImage">
-                <span class="img-label" id="popupLabel">Image Placeholder</span>
             </div>
             <div class="modal-body" id="modalBody">
                 <!-- Dynamic content rendered by JS -->
@@ -2026,7 +2025,6 @@
                 popupImage.src = data.image;
                 popupImage.style.display = 'block';
                 popupImage.style.objectFit = 'contain';
-                popupLabel.textContent = data.location ? '📍 ' + data.location : 'Image Placeholder';
             } else {
                 popupImage.style.display = 'none';
                 popupLabel.textContent = 'No Image Available';
