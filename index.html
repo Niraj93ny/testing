@@ -821,6 +821,7 @@
             display: flex;
             gap: 40px;
             flex-wrap: wrap;
+            align-items: center;
         }
         .contact-bar .info-item {
             display: flex;
@@ -833,6 +834,39 @@
         }
         .contact-bar .info-item span {
             font-size: 0.95rem;
+        }
+
+        .contact-bar .gst-brochure {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 2px solid rgba(204, 68, 0, 0.3);
+            padding-left: 20px;
+        }
+        .contact-bar .gst-brochure .gst-text {
+            font-size: 0.85rem;
+            color: var(--bhagwa);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .contact-bar .gst-brochure .brochure-btn {
+            padding: 6px 18px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 50px;
+            white-space: nowrap;
+            background: var(--bhagwa);
+            color: var(--white);
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        .contact-bar .gst-brochure .brochure-btn:hover {
+            background: var(--bhagwa-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(204, 68, 0, 0.35);
         }
 
         .footer-bottom {
@@ -888,66 +922,55 @@
             opacity: 1;
         }
         .modal-close {
-    position: absolute;
-    top: 16px;
-    right: 20px;
-    background: white;
-    border: 2px solid #CC4400;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 1.4rem;
-    cursor: pointer;
-    color: #CC4400;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    line-height: 1;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-}
-        .modal-close:hover {
-            background: var(--bhagwa);
-            color: var(--white);
-            transform: rotate(90deg);
-        }
-
-        /* Popup image - fits 1536x1024 perfectly without cropping */
-        .modal-image {
-            width: 100%;
-            aspect-ratio: 3/2;
-            /* 1536:1024 = 3:2 */
-            background: var(--grey-100);
-            border-radius: var(--radius) var(--radius) 0 0;
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: white;
+            border: 2px solid #CC4400;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: #CC4400;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 200px;
-            border-bottom: 3px solid var(--bhagwa);
+            z-index: 10;
+            line-height: 1;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
         }
-        .modal-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            /* Shows full image without cropping */
-            background: var(--grey-100);
+        .modal-close:hover {
+            background: #CC4400;
+            color: white;
+            transform: rotate(90deg);
         }
-        .modal-image .img-label {
-            position: absolute;
-            bottom: 16px;
-            left: 20px;
-            background: rgba(204, 68, 0, 0.8);
-            color: var(--white);
-            padding: 4px 16px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
+        .modal-image {
+    width: 100%;
+    aspect-ratio: 3/2;
+    background: var(--grey-100);
+    border-radius: var(--radius) var(--radius) 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+    border-bottom: 3px solid var(--bhagwa);
+}
 
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+        .modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: var(--grey-100);
+}
         .modal-body {
             padding: 32px 36px 36px;
         }
@@ -1077,6 +1100,12 @@
             .motto-section .motto-text {
                 font-size: 2rem;
             }
+            .contact-bar .gst-brochure {
+                border-left: none;
+                padding-left: 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1105,13 +1134,18 @@
             }
             .modal-image {
                 min-height: 140px;
-                aspect-ratio: 3/2;
+                aspect-ratio: 16/10;
             }
             .values-grid {
                 grid-template-columns: 1fr 1fr;
             }
             .motto-section .motto-text {
                 font-size: 1.6rem;
+            }
+            .contact-bar .gst-brochure {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
             }
         }
 
@@ -1589,42 +1623,40 @@
     </section>
 
     <!-- ===== CONTACT ===== -->
-<section class="contact-bar" id="contact">
-    <div class="container">
-        <div class="info">
-            <div class="info-item">
-                <i class="fas fa-phone-alt"></i>
-                <span>9107898999 / 9503649297</span>
-            </div>
-            <div class="info-item">
-                <i class="fas fa-envelope"></i>
-                <span>valorventures19@gmail.com</span>
-            </div>
-            <div class="info-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Pune, Maharashtra, India</span>
-            </div>
-            <div class="info-item" style="border-left:2px solid rgba(204,68,0,0.3);padding-left:20px;">
-                <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;">
-                    <span style="font-size:0.85rem;color:var(--bhagwa);font-weight:600;">
+    <section class="contact-bar" id="contact">
+        <div class="container">
+            <div class="info">
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>9107898999 / 9503649297</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>valorventures19@gmail.com</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Pune, Maharashtra, India</span>
+                </div>
+                <div class="gst-brochure">
+                    <span class="gst-text">
                         <i class="fas fa-file-invoice" style="margin-right:6px;"></i> GST: XX-XXXXX-XXXX
                     </span>
-                    <a href="googledrive" target="_blank" class="btn-primary" style="padding:6px 18px;font-size:0.8rem;text-decoration:none;display:inline-block;border-radius:50px;">
+                    <a href="#" target="_blank" class="brochure-btn">
                         <i class="fas fa-download" style="margin-right:6px;"></i> Download Brochure
                     </a>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-  	<!-- ===== FOOTER ===== -->
-<footer class="footer-bottom">
-    <div class="container">
-        &copy; 2026 <span>Valor Ventures Pvt. Ltd.</span> — Industrial Infrastructure &amp; Engineering Solutions.
-        All rights reserved.
-    </div>
-</footer>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer-bottom">
+        <div class="container">
+            &copy; 2026 <span>Valor Ventures Pvt. Ltd.</span> — Industrial Infrastructure &amp; Engineering Solutions.
+            All rights reserved.
+        </div>
+    </footer>
 
     <!-- ===== MODAL / POPUP ===== -->
     <div class="modal-overlay" id="modalOverlay">
@@ -1633,7 +1665,7 @@
                 <i class="fas fa-times"></i>
             </button>
             <div class="modal-image" id="modalImage">
-                <img src="" alt="Popup Image" id="popupImage">
+                <img src="" alt="Popup Image" id="popupImage" loading="lazy">
             </div>
             <div class="modal-body" id="modalBody">
                 <!-- Dynamic content rendered by JS -->
@@ -1679,7 +1711,7 @@
                     'Concrete Flooring (PCC / RMC) – High-quality industrial flooring solutions.',
                     'Utility Foundations – Precision foundations for plant equipment.'
                 ],
-                image: 'industrialcivil.jpeg'
+                image: 'civil.jpeg'
             },
             maintenance: {
                 title: 'Plant Maintenance',
@@ -1777,7 +1809,7 @@
                     'Built for tough construction site conditions.',
                     'Essential for concrete curing and site safety.'
                 ],
-                image: 'water.jpeg'
+                image: 'watertank.jpeg'
             },
             compactor: {
                 title: 'Plate Compactor',
@@ -1864,7 +1896,7 @@
                     'Designed for large capacity water storage.',
                     'Durable and low-maintenance solution.'
                 ],
-                image: 'watertank.jpeg',
+                image: 'water.jpeg',
                 location: 'Pune, Maharashtra'
             },
             project4: {
@@ -2011,9 +2043,7 @@
         // MODAL LOGIC
         // ============================================================
         const overlay = document.getElementById('modalOverlay');
-        const modalImage = document.getElementById('modalImage');
         const popupImage = document.getElementById('popupImage');
-        const popupLabel = document.getElementById('popupLabel');
         const modalBody = document.getElementById('modalBody');
         const closeBtn = document.getElementById('modalClose');
 
@@ -2021,14 +2051,12 @@
             const data = modalData[key];
             if (!data) return;
 
-            // Set popup image - fits 1536x1024 perfectly
+            // Set popup image with lazy loading
             if (data.image) {
                 popupImage.src = data.image;
                 popupImage.style.display = 'block';
-                popupImage.style.objectFit = 'contain';
             } else {
                 popupImage.style.display = 'none';
-                popupLabel.textContent = 'No Image Available';
             }
 
             // Build details list
@@ -2113,8 +2141,9 @@
         });
 
         console.log('=== Valor Ventures Website ===');
-        console.log('✅ Popup images now use 3:2 aspect ratio (1536x1024) with object-fit: contain');
-        console.log('📸 Images will display fully without cropping');
+        console.log('✅ Icons used for cards, images for hero, about, and popups.');
+        console.log('📸 Popup images have lazy loading enabled.');
+        console.log('❌ Red close button with hover effect.');
     </script>
 
 </body>
