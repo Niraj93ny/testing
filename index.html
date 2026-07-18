@@ -1659,7 +1659,7 @@
                 <i class="fas fa-times"></i>
             </button>
             <div class="modal-image" id="modalImage">
-                <img src="" alt="Popup Image" id="popupImage" loading="lazy">
+                <img src="" alt="Popup Image" id="popupImage">
             </div>
             <div class="modal-body" id="modalBody">
                 <!-- Dynamic content rendered by JS -->
@@ -2045,13 +2045,17 @@
             const data = modalData[key];
             if (!data) return;
 
-            // Set popup image with lazy loading
-            if (data.image) {
-                popupImage.src = data.image;
-                popupImage.style.display = 'block';
-            } else {
-                popupImage.style.display = 'none';
-            }
+            // Set popup image - clear old image first to avoid showing previous
+popupImage.src = ''; // Clear immediately
+if (data.image) {
+    // Use setTimeout to allow browser to clear before loading new
+    setTimeout(() => {
+        popupImage.src = data.image;
+        popupImage.style.display = 'block';
+    }, 50);
+} else {
+    popupImage.style.display = 'none';
+}
 
             // Build details list
             let detailsHTML = '';
